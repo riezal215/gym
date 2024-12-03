@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempahan Gym</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tempahan Gym</h1>
+        <form id="bookingForm">
+            <label for="name">Nama Pengguna:</label>
+            <input type="text" id="name" placeholder="Masukkan nama anda" required>
+            
+            <label for="phone">Nombor Telefon:</label>
+            <input type="tel" id="phone" placeholder="Masukkan nombor telefon anda" required>
+            
+            <label for="time">Pilih Waktu:</label>
+            <select id="time" required>
+                <option value="" disabled selected>Pilih waktu</option>
+                <option value="7:00-8:00 AM">7:00-8:00 AM</option>
+                <option value="8:00-9:00 AM">8:00-9:00 AM</option>
+                <option value="5:00-6:00 PM">5:00-6:00 PM</option>
+                <option value="6:00-7:00 PM">6:00-7:00 PM</option>
+            </select>
+            
+            <button type="submit">Hantar Tempahan</button>
+        </form>
+        <p id="confirmation" class="success"></p>
+    </div>
+
+    <script>
+        const form = document.getElementById('bookingForm');
+        const confirmation = document.getElementById('confirmation');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const time = document.getElementById('time').value;
+
+            if (name && phone && time) {
+                confirmation.textContent = `Tempahan berjaya! Nama: ${name}, Telefon: ${phone}, Waktu: ${time}`;
+                form.reset();
+            } else {
+                confirmation.textContent = "Sila lengkapkan semua maklumat.";
+            }
+        });
+    </script>
+</body>
+</html>
